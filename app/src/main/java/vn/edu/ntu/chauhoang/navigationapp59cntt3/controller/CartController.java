@@ -6,7 +6,9 @@ import java.util.ArrayList;
 
 import vn.edu.ntu.chauhoang.navigationapp59cntt3.model.Product;
 
-public class CartController extends Application implements ICartController {
+public class CartController extends Application implements ICartController
+{
+
     ArrayList<Product> listProduct = new ArrayList<>();
     ArrayList<Product> shoppingCart = new ArrayList<>();
     public CartController()
