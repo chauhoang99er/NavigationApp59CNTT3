@@ -1,0 +1,41 @@
+public class ProductFragment extends Fragment{
+    NavController controller;
+    EditText addname, addprice, adddesc;
+    Button btnadd;
+    ICartController cartController;
+    Product p = new Product("",0,"");
+    public ProductFragment() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        controller = NavHostFragment.findNavController(ProductFragment.this);
+        ((MainActivity)getActivity()).controller = controller;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_product, container, false);
+        addname = view.findViewById(R.id.addname);
+        addprice = view.findViewById(R.id.addprice);
+        adddesc = view.findViewById(R.id.adddesc);
+        cartController = (ICartController) ProductFragment.this.getActivity().getApplication();
+        btnadd = view.findViewById(R.id.addbtn);
+        btnadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                p.setName(addname.getText().toString());
+                p.setPrice(Integer.parseInt(addprice.getText().toString()));
+                p.setDesc(adddesc.getText().toString());
+                cartController.addproduct(p);
+                controller = NavHostFragment.findNavController(ProductFragment.this);
+                controller.navigate(R.id.action_productFragment_to_DSMatHangFragment);
+            }
+        });
+        return view;
+    }
+
+}

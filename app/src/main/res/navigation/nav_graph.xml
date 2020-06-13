@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/DSMatHangFragment">
+    <fragment
+        android:id="@+id/shoppingCartFragment"
+        android:name="vn.edu.ntu.chauhoang.navigationapp59cntt3.ShoppingCartFragment"
+        android:label="fragment_shopping_cart"
+        tools:layout="@layout/fragment_shopping_cart" >
+        <action
+            android:id="@+id/action_shoppingCartFragment_to_confirmFragment"
+            app:destination="@id/confirmFragment"
+            app:popUpTo="@id/shoppingCartFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/confirmFragment"
+        android:name="vn.edu.ntu.chauhoang.navigationapp59cntt3.ConfirmFragment"
+        android:label="fragment_confirm"
+        tools:layout="@layout/fragment_confirm" >
+        <action
+            android:id="@+id/action_confirmFragment_to_DSMatHangFragment"
+            app:destination="@id/DSMatHangFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/DSMatHangFragment"
+        android:name="vn.edu.ntu.chauhoang.navigationapp59cntt3.DSMatHangFragment"
+        android:label="fragment_ds_mat_hang"
+        tools:layout="@layout/fragment_ds_mat_hang" >
+        <action
+            android:id="@+id/action_DSMatHangFragment_to_productFragment"
+            app:destination="@id/productFragment" />
+        <action
+            android:id="@+id/action_DSMatHangFragment_to_shoppingCartFragment"
+            app:destination="@id/shoppingCartFragment"
+            app:popUpTo="@id/DSMatHangFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="vn.edu.ntu.chauhoang.navigationapp59cntt3.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" >
+        <action
+            android:id="@+id/action_productFragment_to_DSMatHangFragment"
+            app:destination="@id/DSMatHangFragment" />
+    </fragment>
+</navigation>
